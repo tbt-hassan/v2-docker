@@ -3,6 +3,8 @@
 # Set ARG
 PLATFORM=$1
 TAG=$2
+CONFIG=$3
+
 if [ -z "$PLATFORM" ]; then
     ARCH="64"
 else
@@ -60,7 +62,7 @@ echo "Prepare to use"
 unzip v2ray.zip && chmod +x v2ray
 mv v2ray /usr/bin/
 mv geosite.dat geoip.dat /usr/local/share/v2ray/
-mv config.json /etc/v2ray/config.json
+echo "$CONFIG" /etc/v2ray/config.json
 
 # Clean
 rm -rf ${PWD}/*

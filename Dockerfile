@@ -4,6 +4,7 @@ LABEL maintainer="V2Fly Community <dev@v2fly.org>"
 WORKDIR /root
 ARG TARGETPLATFORM
 ARG TAG
+ARG CONFIG
 COPY v2ray.sh /root/v2ray.sh
 
 RUN set -ex \
@@ -13,6 +14,6 @@ RUN set -ex \
     && ln -sf /dev/stdout /var/log/v2ray/access.log \
     && ln -sf /dev/stderr /var/log/v2ray/error.log \
     && chmod +x /root/v2ray.sh \
-    && /root/v2ray.sh "${TARGETPLATFORM}" "${TAG}"
+    && /root/v2ray.sh "${TARGETPLATFORM}" "${TAG}" "${CONFIG}"
 
 ENTRYPOINT ["/usr/bin/v2ray"]
